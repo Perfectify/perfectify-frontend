@@ -1,0 +1,6 @@
+services:
+  web:
+    image: alystor/perfectify-frontend:latest
+    restart: always
+    ports:
+      - "4201:4200"
