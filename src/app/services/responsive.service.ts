@@ -36,6 +36,10 @@ export class ResponsiveService {
         this.currentDeviceType = deviceType
       });
   }
-  
+
+  isMobile(): boolean {
+    return this.currentDeviceType == DeviceType.MOBILE;
+  }
+
 }
 
