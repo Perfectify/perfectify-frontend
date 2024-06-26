@@ -1,0 +1,43 @@
+<div class="h-screen w-screen flex justify-center items-center">
+  <app-content-container class="p-10">
+    <!-- Logo and Title -->
+    <div class="flex flex-col items-center">
+      <app-icon class="w-16 h-16 "></app-icon>
+      <app-title-label>Login Page</app-title-label>
+    </div>
+
+    <app-content-spacer></app-content-spacer>
+
+    <!-- Text Fields -->
+    <div class="">
+      <app-input-label>Email Address</app-input-label>
+      <app-text-input class="h-10 w-72"></app-text-input>
+      <app-input-label>Password</app-input-label>
+      <app-text-input type="password" class="h-10 w-72"></app-text-input>
+    </div>
+
+    <!-- Remember Me Text and Checkbox -->
+    <div class="flex items-center mt-2 mb-2">
+      <app-checkbox-input #checkbox class="w-4 h-4"></app-checkbox-input>
+      <app-content-spacer [vertical]="true"></app-content-spacer>
+      <app-input-label (click)="checkbox.click()" class="cursor-pointer">Remember Me?</app-input-label>
+    </div>
+
+    <!-- Login Buttons -->
+    <div>
+      <app-button-input class="h-10 text-white-background">Login</app-button-input>
+      <app-content-spacer></app-content-spacer>
+      <app-button-input class="h-10 text-white-background">
+        <div class="flex justify-center items-center">
+          <img ngSrc="google.svg" width="24" height="24" class="mr-5 shadow-2xl">Login With Google
+        </div>
+      </app-button-input>
+      <app-content-spacer></app-content-spacer>
+    </div>
+
+    <!-- Sign Up Text and Link -->
+    <div class="flex justify-center">
+      <app-input-label>Not already a Member <span class="underline">Sign Up</span></app-input-label>
+    </div>
+  </app-content-container>
+</div>

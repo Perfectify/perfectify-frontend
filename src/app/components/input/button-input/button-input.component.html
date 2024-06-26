@@ -1,0 +1,12 @@
+<div class="w-inherit h-inherit font-nunito">
+  <button [disabled]="this.disabled"
+          class="w-full h-full min-w-32 min-h-2 rounded-lg outline-none bg-secondary shadow-xl"
+          [ngClass]="{
+          'hover:brightness-105' : !disabled,
+          'cursor-not-allowed' : disabled,
+          'bg-disabled' : disabled,
+          }"
+          [ngStyle]="{'background-color': color || null}">
+    <ng-content></ng-content>
+  </button>
+</div>
