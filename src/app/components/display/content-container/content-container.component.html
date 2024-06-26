@@ -1,3 +1,7 @@
-<div class="w-inherit h-inherit shadow-2xl bg-white-background rounded-xl m-inherit p-inherit">
-  <ng-content></ng-content>
+<div class="w-inherit h-inherit shadow-2xl bg-white-background rounded-xl m-inherit p-inherit"
+     [ngClass]="{'invisible' : !this.visible}">
+  <div class="visible">
+    <ng-content>
+    </ng-content>
+  </div>
 </div>

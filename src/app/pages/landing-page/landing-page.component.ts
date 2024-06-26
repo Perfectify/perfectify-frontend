@@ -3,7 +3,6 @@ import {LoadingSpinnerComponent} from "../../components/display/loading-spinner/
 import {ContentContainerComponent} from "../../components/display/content-container/content-container.component";
 import {NgClass, NgIf} from "@angular/common";
 import {ResponsiveService} from "../../services/responsive.service";
-import {DeviceType} from "../../enums/responsive/device-type";
 
 @Component({
   selector: 'app-landing-page',
