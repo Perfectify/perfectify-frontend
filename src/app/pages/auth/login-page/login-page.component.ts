@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ContentContainerComponent} from "../../../components/display/content-container/content-container.component";
 import {TitleLabelComponent} from "../../../components/display/label/title-label/title-label.component";
 import {InputLabelComponent} from "../../../components/display/label/input-label/input-label.component";
@@ -9,6 +9,7 @@ import {NgClass, NgOptimizedImage} from "@angular/common";
 import {CheckboxInputComponent} from "../../../components/input/checkbox-input/checkbox-input.component";
 import {ResponsiveService} from "../../../services/responsive.service";
 import {ContentSpacerComponent} from "../../../components/display/content-spacer/content-spacer.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -23,7 +24,8 @@ import {ContentSpacerComponent} from "../../../components/display/content-spacer
     NgOptimizedImage,
     CheckboxInputComponent,
     NgClass,
-    ContentSpacerComponent
+    ContentSpacerComponent,
+    RouterLink
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'

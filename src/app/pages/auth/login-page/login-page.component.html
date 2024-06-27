@@ -32,12 +32,13 @@
           <img ngSrc="google.svg" width="24" height="24" class="mr-5 shadow-2xl">Login With Google
         </div>
       </app-button-input>
-      <app-content-spacer></app-content-spacer>
     </div>
+
+    <app-content-spacer></app-content-spacer>
 
     <!-- Sign Up Text and Link -->
     <div class="flex justify-center">
-      <app-input-label>Not already a Member <span class="underline">Sign Up</span></app-input-label>
+      <app-input-label>Not already a Member <a routerLink="/auth/register" class="underline">Sign Up</a></app-input-label>
     </div>
   </app-content-container>
 </div>
