@@ -17,10 +17,13 @@
     </div>
 
     <!-- Remember Me Text and Checkbox -->
-    <div class="flex items-center mt-2 mb-2">
-      <app-checkbox-input #checkbox class="w-4 h-4"></app-checkbox-input>
-      <app-content-spacer [vertical]="true"></app-content-spacer>
-      <app-input-label (click)="checkbox.click()" class="cursor-pointer">Remember Me?</app-input-label>
+    <div class="flex justify-between mt-2 mb-2">
+      <div class="flex items-center">
+        <app-checkbox-input #checkbox class="w-4 h-4"></app-checkbox-input>
+        <app-content-spacer [vertical]="true"></app-content-spacer>
+        <app-input-label (click)="checkbox.click()" class="cursor-pointer">Remember Me?</app-input-label>
+      </div>
+      <app-input-label><a routerLink="/auth/reset-password">Forgot Password?</a></app-input-label>
     </div>
 
     <!-- Login Buttons -->
@@ -38,7 +41,8 @@
 
     <!-- Sign Up Text and Link -->
     <div class="flex justify-center">
-      <app-input-label>Not already a Member <a routerLink="/auth/register" class="underline">Sign Up</a></app-input-label>
+      <app-input-label>Not already a Member <a routerLink="/auth/register" class="underline">Sign Up</a>
+      </app-input-label>
     </div>
   </app-content-container>
 </div>
