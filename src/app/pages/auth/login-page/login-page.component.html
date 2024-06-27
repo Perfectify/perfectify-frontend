@@ -1,48 +1,62 @@
-<div class="h-screen w-screen flex justify-center items-center">
-  <app-content-container class="p-10">
-    <!-- Logo and Title -->
-    <div class="flex flex-col items-center">
-      <app-icon class="w-16 h-16 "></app-icon>
-      <app-title-label>Login Page</app-title-label>
-    </div>
-
-    <app-content-spacer></app-content-spacer>
-
-    <!-- Text Fields -->
-    <div class="">
-      <app-input-label>Email Address</app-input-label>
-      <app-text-input class="h-10 w-72"></app-text-input>
-      <app-input-label>Password</app-input-label>
-      <app-text-input type="password" class="h-10 w-72"></app-text-input>
-    </div>
-
-    <!-- Remember Me Text and Checkbox -->
-    <div class="flex justify-between mt-2 mb-2">
-      <div class="flex items-center">
-        <app-checkbox-input #checkbox class="w-4 h-4"></app-checkbox-input>
-        <app-content-spacer [vertical]="true"></app-content-spacer>
-        <app-input-label (click)="checkbox.click()" class="cursor-pointer">Remember Me?</app-input-label>
+<div class="h-screen w-screen flex flex-col justify-center items-center">
+  <app-content-container>
+    <div class="p-10">
+      <!-- Logo and Title -->
+      <div class="flex flex-col items-center">
+        <app-icon class="w-16 h-16 "></app-icon>
+        <app-title-label>Login Page</app-title-label>
       </div>
-      <app-input-label><a routerLink="/auth/reset-password">Forgot Password?</a></app-input-label>
-    </div>
 
-    <!-- Login Buttons -->
-    <div>
-      <app-button-input class="h-10 text-white-background">Login</app-button-input>
       <app-content-spacer></app-content-spacer>
-      <app-button-input class="h-10 text-white-background">
-        <div class="flex justify-center items-center">
-          <img ngSrc="google.svg" width="24" height="24" class="mr-5 shadow-2xl">Login With Google
+
+      <!-- Text Fields -->
+      <div class="">
+        <app-input-label>Email Address</app-input-label>
+        <app-text-input [(value)]="this.loginData.email" class="h-10 w-72"></app-text-input>
+        <app-input-label>Password</app-input-label>
+        <app-text-input [(value)]="this.loginData.password" type="password" class="h-10 w-72"></app-text-input>
+      </div>
+
+      <!-- Remember Me Text and Checkbox -->
+      <div class="flex justify-between mt-2 mb-2">
+        <div class="flex items-center">
+          <app-checkbox-input #checkbox class="w-4 h-4"></app-checkbox-input>
+          <app-content-spacer [vertical]="true"></app-content-spacer>
+          <app-input-label (click)="checkbox.click()" class="cursor-pointer">Remember Me?</app-input-label>
         </div>
-      </app-button-input>
-    </div>
+        <app-input-label><a routerLink="/auth/reset-password">Forgot Password?</a></app-input-label>
+      </div>
 
-    <app-content-spacer></app-content-spacer>
+      <!-- Login Buttons -->
+      <div>
+        <app-button-input class="h-10 text-white-background" (click)="this.performEmailPasswordLogin()">
+          Login
+        </app-button-input>
+        <app-content-spacer></app-content-spacer>
+        <app-button-input class="h-10 text-white-background">
+          <div class="flex justify-center items-center">
+            <img ngSrc="google.svg" width="24" height="24" class="mr-5 shadow-2xl">Login With Google
+          </div>
+        </app-button-input>
+      </div>
 
-    <!-- Sign Up Text and Link -->
-    <div class="flex justify-center">
-      <app-input-label>Not already a Member <a routerLink="/auth/register" class="underline">Sign Up</a>
-      </app-input-label>
+      <app-content-spacer></app-content-spacer>
+
+      <!-- Sign Up Text and Link -->
+      <div class="flex justify-center">
+        <app-input-label>Not already a Member <a routerLink="/auth/register" class="underline">Sign Up</a>
+        </app-input-label>
+      </div>
     </div>
   </app-content-container>
+
+  <div *ngIf="this.loginError">
+
+    <app-content-spacer></app-content-spacer>
+
+    <div class="bg-red-500 p-3 rounded-xl shadow-2xl horizontal-shake">
+      {{ this.loginError.message }}
+    </div>
+  </div>
+
 </div>
