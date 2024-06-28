@@ -23,7 +23,8 @@ export class LandingPageComponent {
   constructor(protected responsiveService: ResponsiveService, private authenticationService: AuthenticationService, private router: Router) {
     this.authenticationService.userObservable.subscribe(() => {
       if (this.authenticationService.isAuthenticated()) {
-        //TODO User Check and Route to dashboard
+        //TODO User Check
+        this.router.navigate(["/dashboard"])
       } else {
         this.router.navigate(["/auth/login"])
       }

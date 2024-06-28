@@ -21,8 +21,10 @@ import {Router} from "@angular/router";
 export class LogoutPageComponent {
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
+    console.log("TEST 1")
     this.authenticationService.logout().then(() => {
-      this.router.navigate([""])
+      console.log("TEST 2")
+      this.router.navigate(["/auth/login"])
     })
   }
 

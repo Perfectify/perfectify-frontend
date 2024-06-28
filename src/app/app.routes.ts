@@ -8,17 +8,25 @@ import {LogoutPageComponent} from "./pages/auth/logout-page/logout-page.componen
 import {
   FinishRegistrationPageComponent
 } from "./pages/auth/finish-registration-page/finish-registration-page.component";
+import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
+import {ProtectedRouteGuard} from "./security/protected-route-guard";
+import {UnprotectedRouteGuard} from "./security/unprotected-route-guard";
 
 export const routes: Routes = [
   {path: "", component: LandingPageComponent},
   {path: "cdp", component: ComponentDebugPageComponent},
   {
     path: "auth", children: [
-      {path: "login", component: LoginPageComponent},
+      {path: "login", canActivate: [UnprotectedRouteGuard], component: LoginPageComponent},
       {path: "logout", component: LogoutPageComponent},
-      {path: "register", component: RegisterPageComponent},
-      {path: "reset-password", component: ResetPasswordPageComponent},
+      {path: "register", canActivate: [UnprotectedRouteGuard], component: RegisterPageComponent},
+      {path: "reset-password", canActivate: [UnprotectedRouteGuard], component: ResetPasswordPageComponent},
       {path: "finish-registration", component: FinishRegistrationPageComponent},
     ]
+  },
+  {
+    path: "dashboard",
+    component: DashboardPageComponent,
+    canActivate: [ProtectedRouteGuard]
   }
 ];

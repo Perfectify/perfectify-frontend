@@ -8,7 +8,7 @@ import {ButtonInputComponent} from "../../../components/input/button-input/butto
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {CheckboxInputComponent} from "../../../components/input/checkbox-input/checkbox-input.component";
 import {ContentSpacerComponent} from "../../../components/display/content-spacer/content-spacer.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {LoginData} from "../../../data-model/interfaces/auth/login-data";
 import {UserCredential} from "@angular/fire/auth";
@@ -41,7 +41,7 @@ export class LoginPageComponent {
   /* Hold error data if loginError is undefined no error is present */
   protected loginError?: LoginError
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   protected performEmailPasswordLogin() {
@@ -54,7 +54,8 @@ export class LoginPageComponent {
 
   private handleLoginPromise(loginPromise: Promise<UserCredential>): void {
     loginPromise.then(() => {
-      //TODO NAVIGATE TO DASHBOARD
+      //TODO USER CHECK
+      this.router.navigate(["/dashboard"])
     }).catch(error => {
       this.loginError = {
         message: this.authenticationService.getErrorMessageByCode(error.code)

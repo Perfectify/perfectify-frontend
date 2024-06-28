@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {Auth, signInWithEmailAndPassword, signOut, user, User, UserCredential} from '@angular/fire/auth';
+import {Auth, IdTokenResult, signInWithEmailAndPassword, signOut, user, User, UserCredential} from '@angular/fire/auth';
 import {Observable} from "rxjs";
 import {LoginData} from "../data-model/interfaces/auth/login-data";
 
@@ -12,7 +12,7 @@ export class AuthenticationService {
   private auth = inject(Auth)
   public userObservable: Observable<User | null> = user(this.auth)
 
-  /* Curren User instance or null if not initialized or not authenticated */
+  /* Current User instance or null if not initialized or not authenticated */
   private user: User | null = null
 
   constructor() {
@@ -27,6 +27,10 @@ export class AuthenticationService {
 
   public loginWithEmailAndPassword(loginData: LoginData): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.auth, loginData.email, loginData.password)
+  }
+
+  public getToken(): Promise<IdTokenResult> | null {
+    return this.user?.getIdTokenResult() ?? null
   }
 
   public getErrorMessageByCode(code: string): string {
