@@ -44,6 +44,10 @@ export class LoginPageComponent {
   constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
+  protected performGoogleLogin() {
+    this.handleLoginPromise(this.authenticationService.loginWithGoogleAccount())
+  }
+
   protected performEmailPasswordLogin() {
     if (this.isLoginDataInvalid()) {
       this.loginError = {message: "Please enter valid email and password to login."}
@@ -54,7 +58,6 @@ export class LoginPageComponent {
 
   private handleLoginPromise(loginPromise: Promise<UserCredential>): void {
     loginPromise.then(() => {
-      //TODO USER CHECK
       this.router.navigate(["/dashboard"])
     }).catch(error => {
       this.loginError = {

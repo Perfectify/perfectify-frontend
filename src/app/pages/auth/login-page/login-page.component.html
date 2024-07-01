@@ -33,7 +33,7 @@
           Login
         </app-button-input>
         <app-content-spacer></app-content-spacer>
-        <app-button-input class="h-10 text-white-background">
+        <app-button-input (click)="this.performGoogleLogin()" class="h-10 text-white-background">
           <div class="flex justify-center items-center">
             <img ngSrc="google.svg" width="24" height="24" class="mr-5 shadow-2xl">Login With Google
           </div>

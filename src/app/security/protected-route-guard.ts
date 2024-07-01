@@ -3,6 +3,7 @@ import {UserService} from "../services/user.service";
 import {catchError, first, from, map, Observable, of, switchMap} from "rxjs";
 import {Injectable} from "@angular/core";
 import {AuthenticationService} from "../services/authentication.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class ProtectedRouteGuard {
@@ -18,7 +19,14 @@ export class ProtectedRouteGuard {
       first(),
       switchMap(() => from(this.userService.getUser())),
       map(() => true),
-      catchError(() => of((this.router.parseUrl('/auth/login'))))
+      catchError((error: HttpErrorResponse) => {
+        switch (error.status) {
+          case 404:
+            return of(this.router.parseUrl("/auth/finish-registration"))
+          default:
+            return of(this.router.parseUrl('/auth/login'));
+        }
+      })
     )
   }
 
