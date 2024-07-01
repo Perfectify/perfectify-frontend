@@ -7,7 +7,7 @@ import {InputLabelComponent} from "../../../components/display/label/input-label
 import {TextInputComponent} from "../../../components/input/text-input/text-input.component";
 import {ButtonInputComponent} from "../../../components/input/button-input/button-input.component";
 import {UserService} from "../../../services/user.service";
-import {RegisterData} from "../../../data-model/interfaces/auth/register-data";
+import {RegisterData, RegisterUserData} from "../../../data-model/interfaces/auth/register-data";
 import {LoginError} from "../../../data-model/interfaces/auth/login-error";
 import {RegisterError} from "../../../data-model/interfaces/auth/register-error";
 import {Router} from "@angular/router";
@@ -32,7 +32,7 @@ import {NgIf} from "@angular/common";
 })
 export class FinishRegistrationPageComponent {
 
-  protected registerData: RegisterData = {firstName: "", lastName: "", email: "", password: ""}
+  protected registerUserData: RegisterUserData = {firstName: "", lastName: ""}
 
   /* Hold error data if loginError is undefined no error is present */
   protected registerError?: RegisterError
@@ -44,7 +44,7 @@ export class FinishRegistrationPageComponent {
     if (this.isLoginDataInvalid()) {
       this.registerError = {message: "First Name and Last Name are required!"}
     } else {
-      this.userService.registerUser(this.registerData).then(() => {
+      this.userService.registerUser(this.registerUserData).then(() => {
         this.router.navigate(["/dashboard"])
       }).catch((error) => {
         const apiError = error.error as ApiError
@@ -54,7 +54,7 @@ export class FinishRegistrationPageComponent {
   }
 
   private isLoginDataInvalid(): boolean {
-    return !this.registerData.firstName || !this.registerData.lastName
+    return !this.registerUserData.firstName || !this.registerUserData.lastName
   }
 
 }

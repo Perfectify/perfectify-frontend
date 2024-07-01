@@ -1,4 +1,4 @@
-<div class="h-screen w-screen flex justify-center items-center">
+<div class="h-screen w-screen flex flex-col justify-center items-center">
   <app-content-container class="p-10">
     <!-- Title and Logo -->
     <div class="flex flex-col items-center">
@@ -10,20 +10,17 @@
 
     <!-- Text Fields -->
     <div>
-      <app-input-label>First Name</app-input-label>
-      <app-text-input class="h-10 w-72"></app-text-input>
-      <app-input-label>Last Name</app-input-label>
-      <app-text-input class="h-10 w-72"></app-text-input>
       <app-input-label>Email Address</app-input-label>
-      <app-text-input type="email" class="h-10 w-72"></app-text-input>
+      <app-text-input [(value)]="registerData.email" type="email" class="h-10 w-72"></app-text-input>
       <app-input-label>Password</app-input-label>
-      <app-text-input type="password" class="h-10 w-72"></app-text-input>
+      <app-text-input [(value)]="registerData.password" type="password" class="h-10 w-72"></app-text-input>
     </div>
 
     <app-content-spacer></app-content-spacer>
 
     <!-- Button -->
-    <app-button-input class="h-10 text-white-background">Sign Up</app-button-input>
+    <app-button-input (click)="this.performEmailRegistration()" class="h-10 text-white-background">Sign Up
+    </app-button-input>
 
     <app-content-spacer></app-content-spacer>
 
@@ -34,4 +31,13 @@
     </div>
 
   </app-content-container>
+
+  <div *ngIf="this.registerError">
+
+    <app-content-spacer></app-content-spacer>
+
+    <div class="bg-red-500 p-3 rounded-xl shadow-2xl horizontal-shake">
+      {{ this.registerError.message }}
+    </div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {
-  Auth,
+  Auth, createUserWithEmailAndPassword,
   GoogleAuthProvider,
   IdTokenResult,
   signInWithEmailAndPassword,
@@ -12,6 +12,7 @@ import {
 } from '@angular/fire/auth';
 import {Observable} from "rxjs";
 import {LoginData} from "../data-model/interfaces/auth/login-data";
+import {RegisterData} from "../data-model/interfaces/auth/register-data";
 
 
 @Injectable({
@@ -41,6 +42,10 @@ export class AuthenticationService {
 
   public loginWithGoogleAccount(): Promise<UserCredential> {
     return signInWithPopup(this.auth, new GoogleAuthProvider())
+  }
+
+  public registerWithEmailAndPassword(registerData: RegisterData): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(this.auth, registerData.email, registerData.password)
   }
 
   public getToken(): Promise<IdTokenResult> | null {
