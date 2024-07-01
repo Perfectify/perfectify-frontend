@@ -1,5 +1,5 @@
 export const environment = {
   title: "Perfectify Web Application.",
   production: true,
-  apiUrl: "https://api.alystor.net/",
+  apiUrl: "https://api.alystor.net",
 };

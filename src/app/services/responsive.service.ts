@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {OrientationType} from "../enums/responsive/orientation-type";
-import {DeviceType} from "../enums/responsive/device-type";
+import {OrientationType} from "../data-model/enums/responsive/orientation-type";
+import {DeviceType} from "../data-model/enums/responsive/device-type";
 
 @Injectable({
   providedIn: 'root'
